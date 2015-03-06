@@ -3,16 +3,29 @@ game.PlayerEntity = me.Entity.extend({
        this._super(me.Entity, 'init', [x, y, {
                image: "player",
                width: 64,
-               heidht: 64,
+               height: 64,
                spritewidth: "64",
-               spriteheidht: "64",
+               spriteheight: "64",
                getShape: function(){
-                   return(new me.Rect(0, 0, 64, 64)).toPolygon;
+                   return(new me.Rect(0, 0, 64, 64)).toPolygon();
                }
        }]);
+   
+       this.body.setVelocity(5, 20);
+   
    },
    
-   update: function(){
+   update: function(delta){
+       if(me.input.isKeyPressed("right")){
+           //adds to set the position of my adding the velocity defined above in
+           //setVelocity() and multiplying it by me.timer.tick.
+           //me.timer.tick makes the movement look smooth
+           this.body.vel.x += this.body.accel.x * me.timer.tick;
+       }else{
+           this.body.vel.x = 0;
+       }
        
+       this.body.update(delta);
+       return true;
    }
 });
