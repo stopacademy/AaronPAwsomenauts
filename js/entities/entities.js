@@ -16,6 +16,7 @@ game.PlayerEntity = me.Entity.extend({
        
        this.renderable.addAnimation("idle", [78]);
        this.renderable.addAnimation("walk", [117, 118, 119, 120, 121, 122, 123, 124, 125], 80);
+       this.renderable.addAnimation("attack", [65, 66, 67, 68, 69, 70, 71, 72], 80);
    
        this.renderable.setCurrentAnimation("idle");
    },
@@ -31,13 +32,38 @@ game.PlayerEntity = me.Entity.extend({
            this.body.vel.x = 0;
        }
        
-       if(this.body.vel.x !== 0){
-       if(!this.renderable.isCurrentAnimation("walk")){
-           this.renderable.setCurrentAnimation("walk");
+       if(me.input.isKeyPressed("attack")){
+           if(!this.renderable.isCurrentAnimation("attack")){
+               console.log(!this.renderable.isCurrentAnimation("attack"));
+               //sets the current animation to attack and once that is over
+               //gose back to the idle animation
+               this.renderable.setCurrentAnimation("attack", "idle");
+               //Makes it so that the next time we start this sequence we begin
+               //from the first animation, not wherever we left off when we
+               //switched to another animation.
+               this.renderable.setAnimationFrame();
+           }
+       }
+       else if(this.body.vel.x !== 0){
+           if(!this.renderable.isCurrentAnimation("walk")){
+               this.renderable.setCurrentAnimation("walk");
        }
    }else{
        this.renderable.setCurrentAnimation("idle");
    }
+   
+   if(me.input.isKeyPressed("attack")){
+           if(!this.renderable.isCurrentAnimation("attack")){
+               console.log(!this.renderable.isCurrentAnimation("attack"));
+               //sets the current animation to attack and once that is over
+               //gose back to the idle animation
+               this.renderable.setCurrentAnimation("attack", "idle");
+               //Makes it so that the next time we start this sequence we begin
+               //from the first animation, not wherever we left off when we
+               //switched to another animation.
+               this.renderable.setAnimationFrame();
+           }
+       }
        
        
        this.body.update(delta);
@@ -56,7 +82,7 @@ game.PlayerBaseEntity = me.Entity.extend({
                 spritewidth: "100",
                 spriteheight: "100",
                 getShape: function(){
-                    return (new me.Rect(0, 0, 100, 100)).toPolygon();
+                    return (new me.Rect(0, 0, 100, 70)).toPolygon();
                 }
         }]);
         this.broken = false;
@@ -97,7 +123,7 @@ game.EnemyBaseEntity = me.Entity.extend({
                 spritewidth: "100",
                 spriteheight: "100",
                 getShape: function(){
-                    return (new me.Rect(0, 0, 100, 100)).toPolygon();
+                    return (new me.Rect(0, 0, 100, 70)).toPolygon();
                 }
         }]);
         this.broken = false;
