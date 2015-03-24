@@ -70,6 +70,8 @@ game.PlayerEntity = me.Entity.extend({
        me.collision.check(this, true, this.collideHandler.bind(this), true);
        this.body.update(delta);
        
+       
+       
        this._super(me.Entity, "update", [delta]);
        return true;
    },
@@ -89,7 +91,7 @@ game.PlayerEntity = me.Entity.extend({
               this.body.vel.x = 0;
               this.pos.x = this.pos.x -1;
            }else if(xdif<70 && this.facing==='left' && xdif<0){
-               this.body.val.x = 0;
+               this.body.vel.x = 0;
                this.pos.x = this.pos.x +1;
            }
            
@@ -118,7 +120,7 @@ game.PlayerBaseEntity = me.Entity.extend({
         this.health = 10;
         this.alwysUpdate = true;
         this.body.onCollision = this.onCollision.bind(this);
-        //console.log("init");
+        console.log("init");
         this.type = "PlayerBaseEntity";
         
         this.renderable.addAnimation("idle", [0]);
@@ -191,7 +193,7 @@ game.EnemyBaseEntity = me.Entity.extend({
 game.EnemyCreep = me.Entity.extend({
    init: function(x, y, settings){
        this._super(me.Entity, 'init', [x, y, {
-           image: "creeep1",
+           image: "creep1",
            width: 32,
            height: 64,
            spritewidth: "32",
@@ -202,7 +204,7 @@ game.EnemyCreep = me.Entity.extend({
        }]);
        this.health = 10;
        this.alwaysUpdate = true;
-       
+       this.now = new Date().getTime();
        this.body.setVelocity(3, 20);
        
        this.type = "EnemyCreep";
@@ -212,8 +214,29 @@ game.EnemyCreep = me.Entity.extend({
    
    },
    
-   update: function(){
+   update: function(delta){
+       this.now  = new Date().getTime();
        
+       this.body.vel.x -= this.body.accel.x * me.timer.tick;
+       
+       me.collision.check(this, true, this.collideHandle.bind(this), true);
+       
+       
+       this.body.update(delta);
+       
+       
+       
+       this._super(me.Entity, "update", [delta]);
+       return true;
+   },
+   
+   collideHandler: function(response){
+       if(response.b.type==='PlayerBase'){
+           this.attacking=true;
+           this.lastAttacking=this.now;
+           this.body.vel.x = 0;
+           
+       }
    }
    
 });
