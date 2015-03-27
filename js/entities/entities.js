@@ -11,8 +11,8 @@ game.PlayerEntity = me.Entity.extend({
                }
        }]);
        this.type = "PlayerEntity";
-       this.health = 20;
-       this.body.setVelocity(5, 20);
+       this.health = game.data.playerHealth;
+       this.body.setVelocity(game.data.playerMoveSpeed, 20);
        //Keeps track of which direction your character is going
        this.facing = "right";
        this.now = new Date().getTime();
@@ -85,8 +85,8 @@ game.PlayerEntity = me.Entity.extend({
    
    collideHandler: function(response){
        if(response.b.type==='EnemyBaseEntity'){
-           var ydif = this.pos.y -response.b.pos.y;
-           var xdif = this.pos.x -response.b.pos.x;
+           var ydif = this.pos.y - response.b.pos.y;
+           var xdif = this.pos.x - response.b.pos.x;
            
            console.log("xdif " + xdif + " ydif " + ydif);
            
@@ -113,18 +113,21 @@ game.PlayerEntity = me.Entity.extend({
            
            if (xdif>0){
                this.pos.x = this.pos.x + 1;
-               if(this.faceing==="left"){
-                   this.vel.x = 0;
+               if(this.facing==="left"){
+                   this.body.vel.x = 0;
                }
            }else{
                this.pos.x = this.pos.x - 1;
-               if(this.faceing==="right"){
-                   this.vel.x = 0;
+               if(this.facing==="right"){
+                   this.body.vel.x = 0;
            }
        }
-           if(this.renderable.isCurrentAnimation("attack") && this.now-this.lastHit >= 1000){
+           if(this.renderable.isCurrentAnimation("attack") && this.now-this.lastHit >= 1000
+                   && (Math.abs(ydif) <=40) && 
+                   (((xdif>0) && this.facing==="left") || ((xdif<0) && this.facing==="right"))
+                   ){
                this.lastHit = this.now;
-               response.b.loseHealth(1);
+               response.b.loseHealth();
            }
        }
    }
@@ -254,6 +257,7 @@ game.EnemyCreep = me.Entity.extend({
    },
    
    update: function(delta){
+       console.log(this.health);
        if(this.health <= 0){
            me.game.world.removeChild(this);
        }
