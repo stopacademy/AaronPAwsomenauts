@@ -18,6 +18,7 @@ game.PlayerEntity = me.Entity.extend({
        this.now = new Date().getTime();
        this.lastHit = this.now;
        this.dead = false;
+       this.attack = game.data.playerAttack;
        this.lastAttack = new Date().getTime();  //Haven't used this
        me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
        
@@ -134,6 +135,12 @@ game.PlayerEntity = me.Entity.extend({
                    (((xdif>0) && this.facing==="left") || ((xdif<0) && this.facing==="right"))
                    ){
                this.lastHit = this.now;
+               //if the creeps health is less than our attack, execute code in if statement
+               if(response.b.health <= game.data.playerAttack){
+                   //adds one gold for a creep kill
+                   game.data.gold += 1;
+               }
+               
                response.b.loseHealth(game.data.playerAttack);
            }
        }
