@@ -23,7 +23,7 @@ var game = {
                 gameManager: "",
                 player: "",
                 exp: 0,
-                gold: 0,
+                gold: 2,
                 exp1: 0,
                 exp2: 0,
                 exp3: 0,
