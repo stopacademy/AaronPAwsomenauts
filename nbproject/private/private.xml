@@ -4,14 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/AaronPAwsomenauts/js/screens/play.js</file>
-            <file>file:/C:/xampp/htdocs/AaronPAwsomenauts/js/entities/entities.js</file>
             <file>file:/C:/xampp/htdocs/AaronPAwsomenauts/js/entities/PlayerBaseEntity.js</file>
-            <file>file:/C:/xampp/htdocs/AaronPAwsomenauts/js/entities/EnemyBaseEntity.js</file>
+            <file>file:/C:/xampp/htdocs/AaronPAwsomenauts/js/entities/entities.js</file>
             <file>file:/C:/xampp/htdocs/AaronPAwsomenauts/js/game.js</file>
-            <file>file:/C:/xampp/htdocs/AaronPAwsomenauts/js/resources.js</file>
-            <file>file:/C:/xampp/htdocs/AaronPAwsomenauts/js/entities/EnemyCreep.js</file>
-            <file>file:/C:/xampp/htdocs/AaronPAwsomenauts/index.php</file>
-            <file>file:/C:/xampp/htdocs/AaronPAwsomenauts/js/entities/</file>
+            <file>file:/C:/xampp/htdocs/AaronPAwsomenauts/js/screens/title.js</file>
             <file>file:/C:/xampp/htdocs/AaronPAwsomenauts/js/entities/GameManager.js</file>
         </group>
     </open-files>
