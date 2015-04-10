@@ -68,8 +68,6 @@ game.ExperienceManager = Object.extend({
         console.log(game.data.exp);
         this.gameover = true;
         me.save.exp = game.data.exp;
-        //For testing purpose only
-        me.save.exp2 = 4;
     }
     
 });
