@@ -126,7 +126,13 @@ game.SpendGold = Object.extend({
                     },
                     
                     draw: function(renderer){
-                        this.font.draw(renderer.getContext(),"PRESS F1-F6 TO BUY, B TO LEAVE", this.pos.x, this.pos.y);
+                        this.font.draw(renderer.getContext(),"PRESS F1-F6 TO BUY, B TO LEAVE, Current Gold: " + game.data.gold, this.pos.x, this.pos.y);
+                        this.font.draw(renderer.getContext(), "Skill 1: Increase Damage, Current Level: " + game.data.exp1 + " Cost: " + ((game.data.exp1+1)*10),this.pos.x, this.pos.y + 40);
+                        this.font.draw(renderer.getContext(), "Skill 2: Run Faster! Current Level: " + game.data.exp2 + " Cost: " + ((game.data.exp2+1)*10),  this.pos.x, this.pos.y + 80);
+                        this.font.draw(renderer.getContext(), "Skill 3: Increase Health, Current Level " + game.data.exp3 + " Cost: " + ((game.data.exp3+1)*10), this.pos.x, this.pos.y + 120);
+                        this.font.draw(renderer.getContext(), "Q Ability: Speed Burst, Current Level: " + game.data.exp4 + " Cost: " + ((game.data.exp4+1)*10), this.pos.x, this.pos.y + 160);
+                        this.font.draw(renderer.getContext(), "W Ability: Eat Your Creep For Health: " + game.data.exp5 + " Cost: " + ((game.data.exp5+1)*10), this.pos.x, this.pos.y + 200);
+                        this.font.draw(renderer.getContext(), "E Ability: Throw Your Spear: " + game.data.exp6 + " Cost: " + ((game.data.exp6+1)*10), this.pos.x, this.pos.y + 240);
                     }
                     
                 }));
@@ -145,6 +151,7 @@ game.SpendGold = Object.extend({
         me.input.unbindKey(me.input.KEY.F4, "F4", true);
         me.input.unbindKey(me.input.KEY.F5, "F5", true);
         me.input.unbindKey(me.input.KEY.F6, "F6", true);
+        me.game.world.removeChild(game.data.buytext);
     }
     
 });
