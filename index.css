@@ -37,3 +37,11 @@ body {
     text-align: center;
     visibility: hidden;
 }
+
+#load{
+    visibility: hidden;
+}
+
+#register{
+    visibility: hidden;
+}
