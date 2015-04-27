@@ -20,8 +20,12 @@ if ($query->num_rows == 1) {
     if ($row["password"] === crypt($password, $row["salt"])) {
         $_SESSION["authenticated"] = true;
         $array["exp"] = $row["exp"];
+        $array["exp1"] = $row["exp1"];
+        $array["exp2"] = $row["exp2"];
+        $array["exp3"] = $row["exp3"];
+        $array["exp4"] = $row["exp4"];
         
-        echo "<p>Login Successful!</p>";
+        echo json_encode($array);
     } else {
         echo "<p>Invalid username and password</p>";
     }
