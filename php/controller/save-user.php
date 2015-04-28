@@ -20,3 +20,4 @@ if($query){
 }else{
     echo "<p>" . $_SESSION["connection"]->error . "</p>";
 }
+    
