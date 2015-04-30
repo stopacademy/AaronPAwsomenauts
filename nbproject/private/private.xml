@@ -3,11 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/AaronPAwsomenauts/php/controller/login-user.php</file>
             <file>file:/C:/xampp/htdocs/AaronPAwsomenauts/js/screens/play.js</file>
-            <file>file:/C:/xampp/htdocs/AaronPAwsomenauts/index.php</file>
+            <file>file:/C:/xampp/htdocs/AaronPAwsomenauts/php/controller/login-user.php</file>
+            <file>file:/C:/xampp/htdocs/AaronPAwsomenauts/php/controller/login-verify.php</file>
+            <file>file:/C:/xampp/htdocs/AaronPAwsomenauts/js/entities/EnemyCreep.js</file>
+            <file>file:/C:/xampp/htdocs/AaronPAwsomenauts/js/gamemanagers/GameTimerManager.js</file>
             <file>file:/C:/xampp/htdocs/AaronPAwsomenauts/js/screens/spendExp.js</file>
-            <file>file:/C:/xampp/htdocs/AaronPAwsomenauts/js/screens/title.js</file>
+            <file>file:/C:/xampp/htdocs/AaronPAwsomenauts/php/model/Database.php</file>
         </group>
     </open-files>
 </project-private>
